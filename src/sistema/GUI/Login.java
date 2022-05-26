@@ -3,7 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package sistema.GUI;
-
+import sistema.DAO.UsuarioDAO;
+import sistema.Entidades.Usuario;
 /**
  *
  * @author gusta
@@ -28,10 +29,10 @@ public class Login extends javax.swing.JFrame {
     private void initComponents() {
 
         bnLogin = new javax.swing.JButton();
-        Usuario = new javax.swing.JTextField();
+        txtUsuario = new javax.swing.JTextField();
         lblUsuario = new javax.swing.JLabel();
         lblSenha = new javax.swing.JLabel();
-        Senha = new javax.swing.JPasswordField();
+        txtSenha = new javax.swing.JPasswordField();
         lblErroLogin = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -43,9 +44,9 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        Usuario.addActionListener(new java.awt.event.ActionListener() {
+        txtUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UsuarioActionPerformed(evt);
+                txtUsuarioActionPerformed(evt);
             }
         });
 
@@ -53,9 +54,14 @@ public class Login extends javax.swing.JFrame {
 
         lblSenha.setText("Senha:");
 
-        Senha.addActionListener(new java.awt.event.ActionListener() {
+        txtSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SenhaActionPerformed(evt);
+                txtSenhaActionPerformed(evt);
+            }
+        });
+        txtSenha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtSenhaKeyPressed(evt);
             }
         });
 
@@ -73,12 +79,10 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(Usuario, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtUsuario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(bnLogin)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(lblSenha)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(Senha))
+                            .addComponent(lblSenha, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtSenha))
                         .addGap(37, 37, 37))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -92,11 +96,11 @@ public class Login extends javax.swing.JFrame {
                 .addGap(94, 94, 94)
                 .addComponent(lblUsuario)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblSenha)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Senha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblErroLogin)
                 .addGap(22, 22, 22)
@@ -107,29 +111,39 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void UsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsuarioActionPerformed
+    private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_UsuarioActionPerformed
+    }//GEN-LAST:event_txtUsuarioActionPerformed
 
     private void bnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnLoginActionPerformed
-        if(String.valueOf(Senha.getPassword()).equals("ADM") && Usuario.getText().equals("ADM")){
+        UsuarioDAO check = new UsuarioDAO();
+        check.conectar();
+        Usuario usuarioLogin = new Usuario(check.login(txtUsuario.getText()));
+                
+        if(String.valueOf(txtSenha.getPassword()).equals(usuarioLogin.getSenha()) && txtUsuario.getText().equals(usuarioLogin.getUsuario())){
+            if (usuarioLogin.getAdm() == true){
             Adm adm = new Adm();
             adm.setVisible(true);
             this.dispose();
-        }
-        else if(String.valueOf(Senha.getPassword()).equals("FUN") && Usuario.getText().equals("Funcionario")){
+            }
+            else{
             Funcionario fun = new Funcionario();
             fun.setVisible(true);
             this.dispose();
+            }
         }
         else{
             lblErroLogin.setVisible(true);
         }
     }//GEN-LAST:event_bnLoginActionPerformed
 
-    private void SenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SenhaActionPerformed
+    private void txtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSenhaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_SenhaActionPerformed
+    }//GEN-LAST:event_txtSenhaActionPerformed
+
+    private void txtSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSenhaKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSenhaKeyPressed
 
     /**
      * @param args the command line arguments
@@ -167,11 +181,11 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPasswordField Senha;
-    private javax.swing.JTextField Usuario;
     private javax.swing.JButton bnLogin;
     private javax.swing.JLabel lblErroLogin;
     private javax.swing.JLabel lblSenha;
     private javax.swing.JLabel lblUsuario;
+    private javax.swing.JPasswordField txtSenha;
+    private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
