@@ -12,17 +12,18 @@ public class Sistema {
         //Login login = new Login();
         //login.setVisible(true);
         
-        /*UsuarioDAO teste = new UsuarioDAO();
+        UsuarioDAO teste = new UsuarioDAO();
         teste.conectar();
         teste.Listar();
         List<Usuario> saida = teste.Listar();
         for (Usuario usuario : saida){
             System.out.println(usuario.getUsuario());
         } 
-        */
         
+        /*
         ProdutosDAO teste = new ProdutosDAO();
         teste.conectar();
+        */
     }
     
 }

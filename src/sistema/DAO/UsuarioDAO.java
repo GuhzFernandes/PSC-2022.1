@@ -15,23 +15,7 @@ import java.util.List;
  *
  * @author gusta
  */
-public class UsuarioDAO{
-    
-    private final String url = "jdbc:mysql://localhost:3306/projetoa3";
-    private final String user = "root";
-    private final String password = "B!AZsxdc!mly0";
-    private Connection conn;
-    private PreparedStatement st;
-    private ResultSet rs;
-    
-    public void conectar(){
-        try{
-            conn=DriverManager.getConnection(url,user,password);
-            System.out.println("Conectado com sucesso!");
-        }catch(SQLException e){
-            System.out.println("Falha ao conectar "+e);
-        }
-    }
+public class UsuarioDAO extends Conexao{
     
     public List<Usuario> Listar(){
         List usuarios = new ArrayList<>();
