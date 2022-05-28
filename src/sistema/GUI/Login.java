@@ -118,7 +118,7 @@ public class Login extends javax.swing.JFrame {
     private void bnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnLoginActionPerformed
         UsuarioDAO check = new UsuarioDAO();
         check.conectar();
-        Usuario usuarioLogin = new Usuario(check.login(txtUsuario.getText()));
+        Usuario usuarioLogin = new Usuario(check.checkUser(txtUsuario.getText()));
                 
         if(String.valueOf(txtSenha.getPassword()).equals(usuarioLogin.getSenha()) && txtUsuario.getText().equals(usuarioLogin.getUsuario())){
             if (usuarioLogin.getAdm() == true){
