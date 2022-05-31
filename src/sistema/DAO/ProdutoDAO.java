@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package sistema.DAO;
-import sistema.Modelos.Produtos;
+import sistema.Modelos.Produto;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,16 +11,16 @@ import java.util.List;
  *
  * @author gusta
  */
-public class ProdutosDAO extends Conexao {
+public class ProdutoDAO extends Conexao {
     
-    public List<Produtos> Listar(){
+    public List<Produto> Listar(){
         List produtos = new ArrayList<>();
-        Produtos produto;
+        Produto produto;
         try{
             st = conn.prepareStatement("SELECT * FROM projetoa3.produtos");
             rs = st.executeQuery();
             while(rs.next()){
-                produto = new Produtos();
+                produto = new Produto();
                 
             }
                         

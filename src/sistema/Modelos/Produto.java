@@ -3,23 +3,24 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package sistema.Modelos;
+import java.math.BigDecimal;
 
 /**
  *
  * @author gusta
  */
-public class Produtos {
+public class Produto {
     private int idProduto;
     private String marca;
     private String nome;
-    private double preco;
+    private BigDecimal preco;
     private int qtdEstoque;
  
     
-    public Produtos(){
+    public Produto(){
     }
     
-    public Produtos(Produtos produto){
+    public Produto(Produto produto){
         this.idProduto = produto.idProduto;
         this.marca = produto.marca;
         this.nome = produto.nome;
@@ -39,12 +40,16 @@ public class Produtos {
         return this.nome;
     }
     
-    public double getPreco(){
+    public BigDecimal getPreco(){
         return this.preco;
     }
     
     public int getQtdEstoque(){
         return this.qtdEstoque;
+    }
+    
+    public String getNomeExibicao(){
+        return "(ID - "+this.idProduto+") - "+this.marca + " " + this.nome;
     }
      
     public void setMarca(String marca){
@@ -55,7 +60,7 @@ public class Produtos {
         this.nome = nome;
     }
     
-    public void setPreco(double preco){
+    public void setPreco(BigDecimal preco){
         this.preco = preco;
     }
     
@@ -71,5 +76,4 @@ public class Produtos {
                 +this.preco + "\n"
                 +this.qtdEstoque;
     }
-    
 }

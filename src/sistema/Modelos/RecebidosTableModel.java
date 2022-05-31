@@ -10,10 +10,10 @@ import javax.swing.table.AbstractTableModel;
  *
  * @author gusta
  */
-public class UsuariosTableModel extends AbstractTableModel {
+public class RecebidosTableModel extends AbstractTableModel {
 
-    private List<Usuario> dados = new ArrayList<>();
-    private String[] colunas = {"Usuarios", "Senha", "Cargo"};
+    private List<Recebido> dados = new ArrayList<>();
+    private String[] colunas = {"Id", "Produto", "Quantidade Recebida", "Data de Recebimento"};
     
     @Override
     public String getColumnName(int column){
@@ -29,40 +29,38 @@ public class UsuariosTableModel extends AbstractTableModel {
     public int getColumnCount() {
         return colunas.length;
     }
-    
 
     @Override
     public Object getValueAt(int linha, int coluna) {
         switch(coluna){
             case 0:
-                return dados.get(linha).getUsuario();
+                return dados.get(linha).getIdRecebimento();
             
             case 1:
-                return dados.get(linha).getSenha();
+                //Configurar para puxar do banco
+                return dados.get(linha).getProduto();
             
             case 2:
-                if(dados.get(linha).getAdm()){
-                     return "Administrador";
-                }
-                else{
-                     return "Funcionario";
-                }
-            
+                return dados.get(linha).getQtdRecebida();
+                
+            case 3: 
+                return dados.get(linha).getDataRecebimento();
+                      
             default:
-                return null;      
+                return null;  
+                
         }
     }
     
-    public void setTable(List<Usuario> lista){
+    public void setTable(List<Recebido> lista){
         dados = lista;
     }
     
-    public Usuario remover(int linha){
+    public Recebido remover(int linha){
         return this.dados.get(linha);
     }
     
-    public Usuario editar(int linha){
+    public Recebido editar(int linha){
         return this.dados.get(linha);
     }
-    
 }
