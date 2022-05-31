@@ -21,8 +21,6 @@ public class Conexao {
     protected PreparedStatement st;
     protected ResultSet rs;
     
-    
-    
     public void conectar(){
         try{
             conn=DriverManager.getConnection(url,user,password);
@@ -30,7 +28,15 @@ public class Conexao {
         }catch(SQLException e){
             System.out.println("Falha ao conectar "+e);
         }
-        
     }
     
+    public void desconectar(){
+        try{
+            conn.close();
+            System.out.println("Operacao concluida, conexao encerrada!");
+        }catch(SQLException e){
+            System.out.println("Erro ao desconectar " + e);
+        }
+    }
+
 }

@@ -4,7 +4,7 @@
  */
 package sistema.GUI;
 import sistema.DAO.UsuarioDAO;
-import sistema.Entidades.Usuario;
+import sistema.Modelos.Usuario;
 /**
  *
  * @author gusta
@@ -135,6 +135,7 @@ public class Login extends javax.swing.JFrame {
         else{
             lblErroLogin.setVisible(true);
         }
+        check.desconectar();
     }//GEN-LAST:event_bnLoginActionPerformed
 
     private void txtSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSenhaActionPerformed

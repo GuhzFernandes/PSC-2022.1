@@ -3,8 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package sistema.GUI;
+import sistema.Modelos.Usuario;
 import sistema.DAO.*;
-import sistema.Entidades.*;
 /**
  *
  * @author gusta
@@ -15,6 +15,7 @@ public class UsuarioGUI extends javax.swing.JFrame {
      * Creates new form Usuario
      */
     String titulo;
+    Usuario user;
     public UsuarioGUI() {
         titulo = "Novo";
         initComponents();  
@@ -23,6 +24,7 @@ public class UsuarioGUI extends javax.swing.JFrame {
     
     public UsuarioGUI(Usuario user) {
         titulo = "Editar";
+        this.user = user;
         initComponents();  
         lblTitulo.setText(titulo);
         txtUsuario.setText(user.getUsuario());
@@ -144,10 +146,10 @@ public class UsuarioGUI extends javax.swing.JFrame {
             this.dispose();
         }
         else{
-            //usuario.editar(txtUsuario.getText(),txtSenha.getText(),valor);
+            usuario.editar(txtUsuario.getText(),txtSenha.getText(),valor,user.getUsuario());
             this.dispose();
         }
-        
+        usuario.desconectar();
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed

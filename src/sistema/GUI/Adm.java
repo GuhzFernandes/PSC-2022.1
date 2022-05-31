@@ -3,8 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package sistema.GUI;
+import sistema.Modelos.*;
 import sistema.DAO.*;
-import sistema.Entidades.*;
 import java.util.List;
 import java.util.ArrayList;
 /**
@@ -12,22 +12,17 @@ import java.util.ArrayList;
  * @author Ju
  */
 public class Adm extends javax.swing.JFrame {
-
-    /**
-     * Creates new form Adm
-     */
+    UsuariosTableModel usuariosTable = new UsuariosTableModel();
+    
     public Adm() {
-        //lblUsuarioConectado.setText("Conectado como: ");
         initComponents();
         pnlMenuInicial.setVisible(true);
         pnlUsuarios.setVisible(false);
+        
+        
+        tblUsuarios.setModel(usuariosTable);
     }
-    public Adm(String user) {
-        lblUsuarioConectado.setText("Conectado como: "+ user);
-        initComponents();
-        pnlMenuInicial.setVisible(true);
-        pnlUsuarios.setVisible(false);
-    }
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -57,9 +52,11 @@ public class Adm extends javax.swing.JFrame {
         btnUsuariosExibirAdm = new javax.swing.JButton();
         btnUsuariosExibirFuncionarios = new javax.swing.JButton();
         btnUsuariosNovo = new javax.swing.JButton();
+        btnUsuariosEditar = new javax.swing.JButton();
+        btnUsuariosRemover = new javax.swing.JButton();
         lblTituloUsuarios = new javax.swing.JLabel();
         jspUsuario = new javax.swing.JScrollPane();
-        tblUsuario = new javax.swing.JTable();
+        tblUsuarios = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -192,6 +189,20 @@ public class Adm extends javax.swing.JFrame {
             }
         });
 
+        btnUsuariosEditar.setText("Editar");
+        btnUsuariosEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUsuariosEditarActionPerformed(evt);
+            }
+        });
+
+        btnUsuariosRemover.setText("Remover");
+        btnUsuariosRemover.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUsuariosRemoverActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlUsuariosMenuLayout = new javax.swing.GroupLayout(pnlUsuariosMenu);
         pnlUsuariosMenu.setLayout(pnlUsuariosMenuLayout);
         pnlUsuariosMenuLayout.setHorizontalGroup(
@@ -199,8 +210,11 @@ public class Adm extends javax.swing.JFrame {
             .addGroup(pnlUsuariosMenuLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlUsuariosMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnUsuariosEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnUsuariosExibirAdm, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnUsuariosNovo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnUsuariosExibirFuncionarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnUsuariosExibirTodos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(pnlUsuariosMenuLayout.createSequentialGroup()
                         .addGroup(pnlUsuariosMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnUsuariosVoltarMenu)
@@ -211,8 +225,7 @@ public class Adm extends javax.swing.JFrame {
                                 .addComponent(btnUsuariosPesquisa))
                             .addComponent(lblUsuariosExibir))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(btnUsuariosExibirFuncionarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnUsuariosExibirTodos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnUsuariosRemover, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         pnlUsuariosMenuLayout.setVerticalGroup(
@@ -235,6 +248,10 @@ public class Adm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnUsuariosExibirFuncionarios)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnUsuariosRemover)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnUsuariosEditar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnUsuariosNovo)
                 .addGap(77, 77, 77))
         );
@@ -242,7 +259,7 @@ public class Adm extends javax.swing.JFrame {
         lblTituloUsuarios.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lblTituloUsuarios.setText("Usuarios");
 
-        tblUsuario.setModel(new javax.swing.table.DefaultTableModel(
+        tblUsuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -253,7 +270,7 @@ public class Adm extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jspUsuario.setViewportView(tblUsuario);
+        jspUsuario.setViewportView(tblUsuarios);
 
         javax.swing.GroupLayout pnlUsuariosLayout = new javax.swing.GroupLayout(pnlUsuarios);
         pnlUsuarios.setLayout(pnlUsuariosLayout);
@@ -339,7 +356,9 @@ public class Adm extends javax.swing.JFrame {
         exibir.conectar();
         byte cargo = 1;
         List<Usuario> administradores = exibir.listarCargo(cargo);
-        
+        usuariosTable.setTable(administradores);
+        usuariosTable.fireTableDataChanged();
+        exibir.desconectar();
     }//GEN-LAST:event_btnUsuariosExibirAdmActionPerformed
 
     private void btnUsuariosExibirFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuariosExibirFuncionariosActionPerformed
@@ -347,11 +366,18 @@ public class Adm extends javax.swing.JFrame {
         exibir.conectar();
         byte cargo = 0;
         List<Usuario> funcionarios = exibir.listarCargo(cargo);
-        
+        usuariosTable.setTable(funcionarios);
+        usuariosTable.fireTableDataChanged();
+        exibir.desconectar();
     }//GEN-LAST:event_btnUsuariosExibirFuncionariosActionPerformed
 
     private void btnUsuariosExibirTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuariosExibirTodosActionPerformed
-        // TODO add your handling code here:
+        UsuarioDAO exibir = new UsuarioDAO();
+        exibir.conectar();
+        List<Usuario> usuarios = exibir.listar();
+        usuariosTable.setTable(usuarios);
+        usuariosTable.fireTableDataChanged();
+        exibir.desconectar();
     }//GEN-LAST:event_btnUsuariosExibirTodosActionPerformed
 
     private void btnUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuariosActionPerformed
@@ -362,15 +388,34 @@ public class Adm extends javax.swing.JFrame {
     private void btnUsuariosPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuariosPesquisaActionPerformed
         UsuarioDAO buscar = new UsuarioDAO();
         buscar.conectar();
-        buscar.listarPesquisa(txtUsuariosPesquisa.getText());
-        
-        
+        List<Usuario> busca = buscar.listarPesquisa(txtUsuariosPesquisa.getText());
+        usuariosTable.setTable(busca);
+        usuariosTable.fireTableDataChanged();
+        buscar.desconectar();
     }//GEN-LAST:event_btnUsuariosPesquisaActionPerformed
+
+    private void btnUsuariosRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuariosRemoverActionPerformed
+        if(tblUsuarios.getSelectedRow() != -1){
+            Usuario removido = usuariosTable.remover(tblUsuarios.getSelectedRow());
+            UsuarioDAO remover = new UsuarioDAO();
+            remover.conectar();
+            remover.remover(removido.getUsuario());
+            remover.desconectar();
+        }
+    }//GEN-LAST:event_btnUsuariosRemoverActionPerformed
+
+    private void btnUsuariosEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuariosEditarActionPerformed
+        if(tblUsuarios.getSelectedRow() != -1){
+            Usuario editado = usuariosTable.editar(tblUsuarios.getSelectedRow());
+            UsuarioGUI editar = new UsuarioGUI(editado);
+            editar.setVisible(true);
+        }
+    }//GEN-LAST:event_btnUsuariosEditarActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    
+
     public static void main(String args[]) {
        
         try {
@@ -402,17 +447,20 @@ public class Adm extends javax.swing.JFrame {
         });
     }
 
+   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDesconectar;
     private javax.swing.JButton btnProdutos;
     private javax.swing.JButton btnRecebidos;
     private javax.swing.JButton btnRelatorios;
     private javax.swing.JButton btnUsuarios;
+    private javax.swing.JButton btnUsuariosEditar;
     private javax.swing.JButton btnUsuariosExibirAdm;
     private javax.swing.JButton btnUsuariosExibirFuncionarios;
     private javax.swing.JButton btnUsuariosExibirTodos;
     private javax.swing.JButton btnUsuariosNovo;
     private javax.swing.JButton btnUsuariosPesquisa;
+    private javax.swing.JButton btnUsuariosRemover;
     private javax.swing.JButton btnUsuariosVoltarMenu;
     private javax.swing.JButton btnVendas;
     private javax.swing.JScrollPane jspUsuario;
@@ -424,7 +472,7 @@ public class Adm extends javax.swing.JFrame {
     private javax.swing.JPanel pnlMenuInicial;
     private javax.swing.JPanel pnlUsuarios;
     private javax.swing.JPanel pnlUsuariosMenu;
-    private javax.swing.JTable tblUsuario;
+    private javax.swing.JTable tblUsuarios;
     private javax.swing.JTextField txtUsuariosPesquisa;
     // End of variables declaration//GEN-END:variables
 

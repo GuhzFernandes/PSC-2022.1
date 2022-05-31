@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package sistema.DAO;
-import sistema.Entidades.Usuario;
+import sistema.Modelos.Usuario;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -53,7 +53,7 @@ public class UsuarioDAO extends Conexao{
         List usuarios = new ArrayList<>();
         Usuario usuario;
         try{
-            st = conn.prepareStatement("SELECT * FROM projetoa3.usuarios WHERE Usuario = '%"+criterio+"%'");
+            st = conn.prepareStatement("SELECT * FROM projetoa3.usuarios WHERE Usuario LIKE '%"+criterio+"%'");
             rs = st.executeQuery();
             while(rs.next()){
                 usuario = new Usuario();
@@ -99,6 +99,23 @@ public class UsuarioDAO extends Conexao{
         }   
     }
     
+    public void editar(String usuario, String senha, byte adm,String user){
+        try{
+            st = conn.prepareStatement("UPDATE projetoa3.Usuarios SET Usuario = '"+usuario+"', Senha = '"+senha+"', Adm = "+adm+" WHERE Usuario = '"+user+"'");
+            st.execute();
+        }catch(SQLException e){
+            System.out.println("Erro ao atualizar "+e);
+        }
+    }
     
+    public void remover(String user){
+        try{
+            st = conn.prepareStatement("DELETE FROM projetoa3.usuarios WHERE Usuario = '"+user+"'");
+            st.execute();
+        }catch(SQLException e){
+            System.out.println("Erro ao deletar "+e);
+        }
+    }
+
 }
 
