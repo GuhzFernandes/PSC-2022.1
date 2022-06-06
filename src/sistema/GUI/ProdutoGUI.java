@@ -19,6 +19,7 @@ public class ProdutoGUI extends javax.swing.JFrame {
     public ProdutoGUI() {
         titulo = "Novo";
         initComponents();  
+        setLocationRelativeTo(null);
         lblTitulo.setText(titulo);
         lblId.setVisible(false);
         
@@ -28,6 +29,7 @@ public class ProdutoGUI extends javax.swing.JFrame {
         titulo = "Editar";
         this.produto = produto;
         initComponents();
+        setLocationRelativeTo(null);
         lblTitulo.setText(titulo);
         lblId.setText("Id - "+produto.getIdProduto());
         txtMarca.setText(produto.getMarca());

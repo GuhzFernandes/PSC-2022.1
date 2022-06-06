@@ -19,6 +19,7 @@ public class UsuarioGUI extends javax.swing.JFrame {
     public UsuarioGUI() {
         titulo = "Novo";
         initComponents();  
+        setLocationRelativeTo(null);
         lblTitulo.setText(titulo);
     }
     
@@ -26,6 +27,7 @@ public class UsuarioGUI extends javax.swing.JFrame {
         titulo = "Editar";
         this.user = user;
         initComponents();  
+        setLocationRelativeTo(null);
         lblTitulo.setText(titulo);
         txtUsuario.setText(user.getUsuario());
         txtSenha.setText(user.getSenha());

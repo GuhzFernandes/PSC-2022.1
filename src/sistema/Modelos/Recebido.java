@@ -13,6 +13,7 @@ public class Recebido {
     private int produto;
     private int qtdRecebida;
     private LocalDateTime dataRecebimento;
+    private String produtoTexto;
     
     public Recebido(){
     }
@@ -40,6 +41,10 @@ public class Recebido {
         return this.dataRecebimento;
     }
     
+    public String getProdutoTexto(){
+        return this.produtoTexto;
+    }
+    
     public void setIdRecebimento(int idRecebimento){
         this.idRecebimento = idRecebimento;
     }
@@ -54,6 +59,10 @@ public class Recebido {
     
     public void setDataRecebimento(LocalDateTime dataRecebimento){
         this.dataRecebimento = dataRecebimento;
+    }
+    
+    public void setProdutoTexto(String produtoTexto){
+        this.produtoTexto = produtoTexto;
     }
         
     @Override

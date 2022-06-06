@@ -22,6 +22,7 @@ public class Adm extends javax.swing.JFrame {
     
     public Adm() {
         initComponents();
+        setLocationRelativeTo(null);
         pnlMenuInicial.setVisible(true);
         pnlUsuarios.setVisible(false);
         pnlProdutos.setVisible(false);

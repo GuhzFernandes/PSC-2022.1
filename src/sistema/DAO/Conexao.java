@@ -16,7 +16,7 @@ import java.sql.ResultSet;
 public class Conexao {
     protected final String url = "jdbc:mysql://localhost:3306/projetoa3";
     protected final String user = "root";
-    protected final String password = "B!AZsxdc!mly0";
+    protected final String password = "root";
     protected Connection conn;
     protected PreparedStatement st;
     protected ResultSet rs;
