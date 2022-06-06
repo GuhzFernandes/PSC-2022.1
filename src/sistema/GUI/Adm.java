@@ -897,7 +897,7 @@ public class Adm extends javax.swing.JFrame {
         
         RecebidoDAO recebidos = new RecebidoDAO();
         recebidos.conectar();
-        //recebidosTable.setTable(recebidos.listar());
+        recebidosTable.setTable(recebidos.listar());
         recebidos.desconectar();
     }//GEN-LAST:event_btnRecebimentosHistoricoActionPerformed
 

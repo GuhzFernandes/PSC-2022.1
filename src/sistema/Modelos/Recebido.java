@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package sistema.Modelos;
+import sistema.DAO.ProdutoDAO;
 import java.time.LocalDateTime;
 /**
  *
@@ -46,7 +47,7 @@ public class Recebido {
     }
     
     public void setIdRecebimento(int idRecebimento){
-        this.idRecebimento = idRecebimento;
+        
     }
     
     public void setProduto(int produto){
@@ -61,8 +62,13 @@ public class Recebido {
         this.dataRecebimento = dataRecebimento;
     }
     
-    public void setProdutoTexto(String produtoTexto){
-        this.produtoTexto = produtoTexto;
+    public void setProdutoTexto(){
+        ProdutoDAO prod = new ProdutoDAO();
+        prod.conectar();
+        Produto produto = new Produto();
+        produto = prod.checkProduto(this.produto);
+        this.produtoTexto = produto.getNomeExibicao();
+        prod.desconectar();
     }
         
     @Override

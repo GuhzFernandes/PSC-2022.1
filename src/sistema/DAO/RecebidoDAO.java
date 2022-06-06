@@ -25,6 +25,7 @@ public class RecebidoDAO extends Conexao {
                 recebido.setProduto(rs.getInt("Produto"));
                 recebido.setQtdRecebida(rs.getInt("QuantidadeRecebida"));
                 recebido.setDataRecebimento(rs.getTimestamp("DataRecebimento").toLocalDateTime());
+                recebido.setProdutoTexto();
             }            
         }catch(SQLException e){
             System.out.println("Erro ao listar "+e);
@@ -44,6 +45,7 @@ public class RecebidoDAO extends Conexao {
                 recebido.setProduto(rs.getInt("Produto"));
                 recebido.setQtdRecebida(rs.getInt("QuantidadeRecebida"));
                 recebido.setDataRecebimento(rs.getTimestamp("DataRecebimento").toLocalDateTime());
+                recebido.setProdutoTexto();
                 recebidos.add(recebido);
             }            
         }catch(SQLException e){
@@ -64,6 +66,7 @@ public class RecebidoDAO extends Conexao {
                 recebido.setProduto(rs.getInt("Produto"));
                 recebido.setQtdRecebida(rs.getInt("QuantidadeRecebida"));
                 recebido.setDataRecebimento(rs.getTimestamp("DataRecebimento").toLocalDateTime());
+                recebido.setProdutoTexto();
                 recebidos.add(recebido);
             }
         }catch(SQLException e){
