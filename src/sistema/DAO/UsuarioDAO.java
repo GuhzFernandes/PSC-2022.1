@@ -91,7 +91,7 @@ public class UsuarioDAO extends Conexao{
         
     public void criar(String usuario,String senha, byte adm){
         try{
-            st = conn.prepareStatement("INSERT INTO projetoa3.Usuarios (Usuario,Senha,Adm)VALUES('"+usuario+"','"+senha+"',"+adm+")");
+            st = conn.prepareStatement("INSERT INTO projetoa3.usuarios (Usuario,Senha,Adm)VALUES('"+usuario+"','"+senha+"',"+adm+")");
             st.execute();
             
         }catch(SQLException e){
@@ -101,7 +101,7 @@ public class UsuarioDAO extends Conexao{
     
     public void editar(String usuario, String senha, byte adm,String user){
         try{
-            st = conn.prepareStatement("UPDATE projetoa3.Usuarios SET Usuario = '"+usuario+"', Senha = '"+senha+"', Adm = "+adm+" WHERE Usuario = '"+user+"'");
+            st = conn.prepareStatement("UPDATE projetoa3.usuarios SET Usuario = '"+usuario+"', Senha = '"+senha+"', Adm = "+adm+" WHERE Usuario = '"+user+"'");
             st.execute();
         }catch(SQLException e){
             System.out.println("Erro ao atualizar "+e);

@@ -51,7 +51,11 @@ public class Produto {
     public String getNomeExibicao(){
         return "(ID - "+this.idProduto+") - "+this.marca + " " + this.nome;
     }
-     
+    
+    public void setId(int idProduto){
+        this.idProduto = idProduto;
+    }
+    
     public void setMarca(String marca){
         this.marca = marca;
     }

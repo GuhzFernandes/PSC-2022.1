@@ -31,16 +31,17 @@ public class Funcionario extends javax.swing.JFrame {
         btnVendas = new javax.swing.JButton();
         btnRecebidos = new javax.swing.JButton();
         btnDesconectar = new javax.swing.JButton();
-        lblUsuarioConectado = new javax.swing.JLabel();
+        pnlVendas = new javax.swing.JPanel();
+        pnlRecebimentos = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         lblTitulo.setText("Menu");
 
-        btnVendas.setText("Gerenciar Venda");
+        btnVendas.setText("Venda");
 
-        btnRecebidos.setText("Gerenciar Recebimentos");
+        btnRecebidos.setText("Recebimentos");
 
         btnDesconectar.setText("Desconectar");
         btnDesconectar.addActionListener(new java.awt.event.ActionListener() {
@@ -48,8 +49,6 @@ public class Funcionario extends javax.swing.JFrame {
                 btnDesconectarActionPerformed(evt);
             }
         });
-
-        lblUsuarioConectado.setText("Conectado como: ");
 
         javax.swing.GroupLayout pnlMenuInicialLayout = new javax.swing.GroupLayout(pnlMenuInicial);
         pnlMenuInicial.setLayout(pnlMenuInicialLayout);
@@ -66,22 +65,15 @@ public class Funcionario extends javax.swing.JFrame {
                 .addComponent(btnDesconectar)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMenuInicialLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(lblUsuarioConectado)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 237, Short.MAX_VALUE)
+                .addGap(24, 359, Short.MAX_VALUE)
                 .addComponent(lblTitulo)
                 .addGap(350, 350, 350))
         );
         pnlMenuInicialLayout.setVerticalGroup(
             pnlMenuInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlMenuInicialLayout.createSequentialGroup()
-                .addGroup(pnlMenuInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlMenuInicialLayout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(lblTitulo))
-                    .addGroup(pnlMenuInicialLayout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(lblUsuarioConectado)))
+                .addGap(50, 50, 50)
+                .addComponent(lblTitulo)
                 .addGap(134, 134, 134)
                 .addComponent(btnVendas, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -91,25 +83,57 @@ public class Funcionario extends javax.swing.JFrame {
                 .addContainerGap(60, Short.MAX_VALUE))
         );
 
+        javax.swing.GroupLayout pnlVendasLayout = new javax.swing.GroupLayout(pnlVendas);
+        pnlVendas.setLayout(pnlVendasLayout);
+        pnlVendasLayout.setHorizontalGroup(
+            pnlVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 812, Short.MAX_VALUE)
+        );
+        pnlVendasLayout.setVerticalGroup(
+            pnlVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 612, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout pnlRecebimentosLayout = new javax.swing.GroupLayout(pnlRecebimentos);
+        pnlRecebimentos.setLayout(pnlRecebimentosLayout);
+        pnlRecebimentosLayout.setHorizontalGroup(
+            pnlRecebimentosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 800, Short.MAX_VALUE)
+        );
+        pnlRecebimentosLayout.setVerticalGroup(
+            pnlRecebimentosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 600, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 812, Short.MAX_VALUE)
+            .addComponent(pnlVendas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(pnlMenuInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(6, 6, 6)
+                    .addComponent(pnlRecebimentos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGap(6, 6, 6)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 612, Short.MAX_VALUE)
+            .addComponent(pnlVendas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(pnlMenuInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(6, 6, 6)
+                    .addComponent(pnlRecebimentos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGap(6, 6, 6)))
         );
 
         pack();
@@ -161,7 +185,8 @@ public class Funcionario extends javax.swing.JFrame {
     private javax.swing.JButton btnRecebidos;
     private javax.swing.JButton btnVendas;
     private javax.swing.JLabel lblTitulo;
-    private javax.swing.JLabel lblUsuarioConectado;
     private javax.swing.JPanel pnlMenuInicial;
+    private javax.swing.JPanel pnlRecebimentos;
+    private javax.swing.JPanel pnlVendas;
     // End of variables declaration//GEN-END:variables
 }

@@ -23,7 +23,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="812" max="32767" attributes="0"/>
+          <Component id="pnlVendas" alignment="1" max="32767" attributes="0"/>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
@@ -31,16 +31,30 @@
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
+          <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                  <Component id="pnlRecebimentos" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+              </Group>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="612" max="32767" attributes="0"/>
+          <Component id="pnlVendas" alignment="0" max="32767" attributes="0"/>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="pnlMenuInicial" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
+              </Group>
+          </Group>
+          <Group type="103" rootIndex="2" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                  <Component id="pnlRecebimentos" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
               </Group>
           </Group>
       </Group>
@@ -66,9 +80,7 @@
                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                  <Component id="lblUsuarioConectado" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="237" max="32767" attributes="0"/>
+                  <EmptySpace min="24" pref="359" max="32767" attributes="0"/>
                   <Component id="lblTitulo" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="350" max="-2" attributes="0"/>
               </Group>
@@ -77,16 +89,8 @@
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-                          <Component id="lblTitulo" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                          <Component id="lblUsuarioConectado" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
+                  <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                  <Component id="lblTitulo" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="134" max="-2" attributes="0"/>
                   <Component id="btnVendas" min="-2" pref="50" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -109,12 +113,12 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnVendas">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Gerenciar Venda"/>
+            <Property name="text" type="java.lang.String" value="Venda"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btnRecebidos">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Gerenciar Recebimentos"/>
+            <Property name="text" type="java.lang.String" value="Recebimentos"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="btnDesconectar">
@@ -125,12 +129,37 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDesconectarActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="lblUsuarioConectado">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Conectado como: "/>
-          </Properties>
-        </Component>
       </SubComponents>
+    </Container>
+    <Container class="javax.swing.JPanel" name="pnlVendas">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="812" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="612" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+    </Container>
+    <Container class="javax.swing.JPanel" name="pnlRecebimentos">
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="800" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <EmptySpace min="0" pref="600" max="32767" attributes="0"/>
+          </Group>
+        </DimensionLayout>
+      </Layout>
     </Container>
   </SubComponents>
 </Form>
