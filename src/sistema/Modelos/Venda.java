@@ -33,23 +33,27 @@ public class Venda {
     }
     
     public int getIdVenda(){
-        return idVenda;
+        return this.idVenda;
     }
     
     public int getProduto(){
-        return produto;
+        return this.produto;
     }
     
     public BigDecimal getPrecoUnitario(){
-        return precoUnitario;
+        return this.precoUnitario;
     }
     
     public int getQtdVendida(){
-        return qtdVendida;
+        return this.qtdVendida;
     }
     
     public LocalDateTime getDataVenda(){
-        return dataVenda;
+        return this.dataVenda;
+    }
+    
+    public String getProdutoTexto(){
+        return this.produtoTexto;
     }
     
     public void setIdVenda(int idVenda){

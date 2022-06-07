@@ -92,11 +92,10 @@ public class VendaDAO extends Conexao {
     
     public void editar(int idProduto, int qtdAnterior, BigDecimal precoUnitario, int qtdVendida, LocalDateTime dataVenda, int idVenda){
         try{
-            //10 - 15
             int qtdAtualizada = qtdVendida - qtdAnterior;
             st = conn.prepareStatement("UPDATE projetoa3.vendas SET QuantidadeVendida = "+qtdVendida+", DataVenda = CONVERT('"+dataVenda+"', DATETIME),PrecoUnitario = "+precoUnitario+" WHERE IdVenda = "+idVenda);
             st.execute();
-            st = conn.prepareStatement("UPDATE projetoa3.Produtos SET QuantidadeEstoque = QuantidadeEstoque - "+qtdAtualizada+"  WHERE IdProduto = "+idProduto);
+            st = conn.prepareStatement("UPDATE projetoa3.produtos SET QuantidadeEstoque = QuantidadeEstoque - "+qtdAtualizada+"  WHERE IdProduto = "+idProduto);
             st.execute();
         }catch(SQLException e){
             System.out.println("Erro ao atualizar "+e);
@@ -107,7 +106,7 @@ public class VendaDAO extends Conexao {
         try{
             st = conn.prepareStatement("DELETE FROM projetoa3.vendas WHERE IdVenda = "+idVenda);
             st.execute();
-            st = conn.prepareStatement("UPDATE projetoa3.vendas SET QuantidadeEstoque = QuantidadeEstoque + "+qtdVendida+"  WHERE IdProduto = "+idProduto);
+            st = conn.prepareStatement("UPDATE projetoa3.produtos SET QuantidadeEstoque = QuantidadeEstoque + "+qtdVendida+"  WHERE IdProduto = "+idProduto);
             st.execute();
         }catch(SQLException e){
             System.out.println("Erro ao deletar "+e);

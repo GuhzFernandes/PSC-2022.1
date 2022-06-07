@@ -36,8 +36,7 @@ public class VendasTableModel extends AbstractTableModel{
                 return dados.get(linha).getIdVenda();
             
             case 1:
-                //Configurar para puxar do banco
-                return dados.get(linha).getProduto();
+                return dados.get(linha).getProdutoTexto();
             
             case 2:
                 return dados.get(linha).getQtdVendida();

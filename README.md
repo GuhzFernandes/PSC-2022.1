@@ -17,4 +17,4 @@ Programação de Soluções Computacionais - 2022.1
 |[GUSTAVO FERNANDES DA SILVA](https://github.com/GuhzFernandes)|125111346229|
 |[ISABELLE VITÓRIA C. DOS SANTOS](https://github.com/Isabellecatezani)|125111376370|
 |[MILENA O. DE A. R. CORRÊA](https://github.com/milenaofarril)|125111350681|
-|[VINICIUS MATOS DE SOUZA]()|125111349444|
+|[VINICIUS MATOS DE SOUZA](https://github.com/vinixmatos)|125111349444|

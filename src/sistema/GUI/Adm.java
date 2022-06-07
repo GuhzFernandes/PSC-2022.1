@@ -18,7 +18,11 @@ public class Adm extends javax.swing.JFrame {
     
     boolean recebidosControle = true;
     RecebidosTableModel recebidosTable = new RecebidosTableModel();
-    ProdutosTableModel novoRecebidoTable = new ProdutosTableModel();
+    ProdutosTableModel novoRecebidosTable = new ProdutosTableModel();
+    
+    boolean vendasControle = true;
+    VendasTableModel vendasTable = new VendasTableModel();
+    ProdutosTableModel novoVendasTable = new ProdutosTableModel();
     
     public Adm() {
         initComponents();
@@ -27,20 +31,24 @@ public class Adm extends javax.swing.JFrame {
         pnlUsuarios.setVisible(false);
         pnlProdutos.setVisible(false);
         pnlRecebimentos.setVisible(false);
-        
-        
+        pnlVendas.setVisible(false);
+                
         tblUsuarios.setModel(usuariosTable);
         tblUsuarios.setAutoCreateRowSorter(true);
         
         tblProdutos.setModel(produtosTable);
         tblProdutos.setAutoCreateRowSorter(true);
-        
-        
-        
+                        
         tblRecebimentos.setAutoCreateRowSorter(true);
         btnRecebimentosRemover.setVisible(false);
         btnRecebimentosEditar.setVisible(false);
         btnRecebimentosNovo.setVisible(false);
+        
+        tblVendas.setAutoCreateRowSorter(true);
+        btnVendasRemover.setVisible(false);
+        btnVendasEditar.setVisible(false);
+        btnVendasNovo.setVisible(false);
+            
     }
    
     /**
@@ -107,6 +115,21 @@ public class Adm extends javax.swing.JFrame {
         jspRecebimentos = new javax.swing.JScrollPane();
         tblRecebimentos = new javax.swing.JTable();
         lblRecebimentos = new javax.swing.JLabel();
+        pnlVendas = new javax.swing.JPanel();
+        pnlVendasMenu = new javax.swing.JPanel();
+        btnVendasVoltarMenu = new javax.swing.JButton();
+        lblVendasPesquisa = new javax.swing.JLabel();
+        txtVendasPesquisa = new javax.swing.JTextField();
+        btnVendasPesquisa = new javax.swing.JButton();
+        lblVendasExibir = new javax.swing.JLabel();
+        btnVendasNovo = new javax.swing.JButton();
+        btnVendasEditar = new javax.swing.JButton();
+        btnVendasRemover = new javax.swing.JButton();
+        btnVendasHistorico = new javax.swing.JButton();
+        btnVendasRealizar = new javax.swing.JButton();
+        jspVendas = new javax.swing.JScrollPane();
+        tblVendas = new javax.swing.JTable();
+        lblVendas = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -135,6 +158,11 @@ public class Adm extends javax.swing.JFrame {
         });
 
         btnVendas.setText("Gerenciar Venda");
+        btnVendas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVendasActionPerformed(evt);
+            }
+        });
 
         btnRecebidos.setText("Gerenciar Recebimentos");
         btnRecebidos.addActionListener(new java.awt.event.ActionListener() {
@@ -673,45 +701,208 @@ public class Adm extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        pnlVendas.setPreferredSize(new java.awt.Dimension(800, 600));
+
+        pnlVendasMenu.setBackground(new java.awt.Color(220, 220, 220));
+
+        btnVendasVoltarMenu.setText("< Voltar");
+        btnVendasVoltarMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVendasVoltarMenuActionPerformed(evt);
+            }
+        });
+
+        lblVendasPesquisa.setText("Pesquisa");
+
+        btnVendasPesquisa.setText("Pesquisar");
+        btnVendasPesquisa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVendasPesquisaActionPerformed(evt);
+            }
+        });
+
+        lblVendasExibir.setText("Exibir:");
+
+        btnVendasNovo.setText("Nova Venda");
+        btnVendasNovo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVendasNovoActionPerformed(evt);
+            }
+        });
+
+        btnVendasEditar.setText("Editar");
+        btnVendasEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVendasEditarActionPerformed(evt);
+            }
+        });
+
+        btnVendasRemover.setText("Remover");
+        btnVendasRemover.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVendasRemoverActionPerformed(evt);
+            }
+        });
+
+        btnVendasHistorico.setText("Historico de Vendas");
+        btnVendasHistorico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVendasHistoricoActionPerformed(evt);
+            }
+        });
+
+        btnVendasRealizar.setText("Realizar Venda");
+        btnVendasRealizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVendasRealizarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnlVendasMenuLayout = new javax.swing.GroupLayout(pnlVendasMenu);
+        pnlVendasMenu.setLayout(pnlVendasMenuLayout);
+        pnlVendasMenuLayout.setHorizontalGroup(
+            pnlVendasMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlVendasMenuLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlVendasMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnVendasHistorico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnVendasEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnVendasNovo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnVendasRemover, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnVendasRealizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(pnlVendasMenuLayout.createSequentialGroup()
+                        .addGroup(pnlVendasMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnVendasVoltarMenu)
+                            .addComponent(lblVendasPesquisa)
+                            .addGroup(pnlVendasMenuLayout.createSequentialGroup()
+                                .addComponent(txtVendasPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnVendasPesquisa))
+                            .addComponent(lblVendasExibir))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        pnlVendasMenuLayout.setVerticalGroup(
+            pnlVendasMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlVendasMenuLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(btnVendasVoltarMenu)
+                .addGap(18, 18, 18)
+                .addComponent(lblVendasPesquisa)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlVendasMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtVendasPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnVendasPesquisa))
+                .addGap(30, 30, 30)
+                .addComponent(lblVendasExibir)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnVendasHistorico)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnVendasRealizar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnVendasRemover)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnVendasEditar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnVendasNovo)
+                .addGap(77, 77, 77))
+        );
+
+        tblVendas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jspVendas.setViewportView(tblVendas);
+
+        lblVendas.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblVendas.setText("Vendas");
+
+        javax.swing.GroupLayout pnlVendasLayout = new javax.swing.GroupLayout(pnlVendas);
+        pnlVendas.setLayout(pnlVendasLayout);
+        pnlVendasLayout.setHorizontalGroup(
+            pnlVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlVendasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pnlVendasMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnlVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlVendasLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jspVendas, javax.swing.GroupLayout.PREFERRED_SIZE, 541, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(7, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlVendasLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblVendas)
+                        .addGap(235, 235, 235))))
+        );
+        pnlVendasLayout.setVerticalGroup(
+            pnlVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlVendasLayout.createSequentialGroup()
+                .addGroup(pnlVendasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlVendasLayout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(lblVendas)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jspVendas, javax.swing.GroupLayout.DEFAULT_SIZE, 536, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlVendasLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(pnlVendasMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(pnlMenuInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(24, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(pnlUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(pnlProdutos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 812, Short.MAX_VALUE))
+                .addComponent(pnlProdutos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 824, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(pnlRecebimentos, javax.swing.GroupLayout.DEFAULT_SIZE, 812, Short.MAX_VALUE)
                     .addContainerGap()))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(pnlVendas, javax.swing.GroupLayout.DEFAULT_SIZE, 812, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(pnlMenuInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 59, Short.MAX_VALUE))
+            .addComponent(pnlMenuInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(pnlUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(53, Short.MAX_VALUE)))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addComponent(pnlProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 59, Short.MAX_VALUE)))
+                    .addGap(0, 12, Short.MAX_VALUE)))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(pnlRecebimentos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(49, Short.MAX_VALUE)))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnlVendas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap()))
         );
 
         pack();
@@ -886,15 +1077,15 @@ public class Adm extends javax.swing.JFrame {
             //novo - produtos
             ProdutoDAO busca = new ProdutoDAO();
             busca.conectar();
-            novoRecebidoTable.setTable(busca.listarPesquisa(txtRecebimentosPesquisa.getText()));
-            novoRecebidoTable.fireTableDataChanged();
+            novoRecebidosTable.setTable(busca.listarPesquisa(txtRecebimentosPesquisa.getText()));
+            novoRecebidosTable.fireTableDataChanged();
             busca.desconectar();
         }
     }//GEN-LAST:event_btnRecebimentosPesquisaActionPerformed
 
     private void btnRecebimentosNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecebimentosNovoActionPerformed
         if(tblRecebimentos.getSelectedRow() != -1){
-            Produto recebido = novoRecebidoTable.editar(tblRecebimentos.getSelectedRow());
+            Produto recebido = novoRecebidosTable.editar(tblRecebimentos.getSelectedRow());
             RecebidoGUI novo = new RecebidoGUI(recebido);
             novo.setVisible(true);
         }
@@ -933,7 +1124,7 @@ public class Adm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRecebimentosHistoricoActionPerformed
 
     private void btnRecebimentosRealizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecebimentosRealizarActionPerformed
-        tblRecebimentos.setModel(novoRecebidoTable);
+        tblRecebimentos.setModel(novoRecebidosTable);
         btnRecebimentosRemover.setVisible(false);
         btnRecebimentosEditar.setVisible(false);
         btnRecebimentosNovo.setVisible(true);
@@ -941,8 +1132,8 @@ public class Adm extends javax.swing.JFrame {
         
         ProdutoDAO novoRecebimento = new ProdutoDAO();
         novoRecebimento.conectar();
-        novoRecebidoTable.setTable(novoRecebimento.listar());
-        novoRecebidoTable.fireTableDataChanged();
+        novoRecebidosTable.setTable(novoRecebimento.listar());
+        novoRecebidosTable.fireTableDataChanged();
         novoRecebimento.desconectar();
     }//GEN-LAST:event_btnRecebimentosRealizarActionPerformed
 
@@ -950,6 +1141,89 @@ public class Adm extends javax.swing.JFrame {
         pnlMenuInicial.setVisible(false);
         pnlRecebimentos.setVisible(true);
     }//GEN-LAST:event_btnRecebidosActionPerformed
+
+    private void btnVendasVoltarMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendasVoltarMenuActionPerformed
+        pnlMenuInicial.setVisible(true);
+        pnlVendas.setVisible(false);
+    }//GEN-LAST:event_btnVendasVoltarMenuActionPerformed
+
+    private void btnVendasPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendasPesquisaActionPerformed
+        if(vendasControle){
+            //historico - vendas
+            VendaDAO buscar = new VendaDAO();
+            buscar.conectar();
+            vendasTable.setTable(buscar.listarPesquisa(txtVendasPesquisa.getText()));
+            vendasTable.fireTableDataChanged();
+            buscar.desconectar();
+        }
+        else{
+            //novo - produtos
+            ProdutoDAO buscar = new ProdutoDAO();
+            buscar.conectar();
+            novoVendasTable.setTable(buscar.listarPesquisa(txtVendasPesquisa.getText()));
+            novoVendasTable.fireTableDataChanged();
+            buscar.desconectar();
+        }
+    }//GEN-LAST:event_btnVendasPesquisaActionPerformed
+
+    private void btnVendasNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendasNovoActionPerformed
+        if(tblVendas.getSelectedRow() != -1){
+            Produto recebido = novoVendasTable.editar(tblVendas.getSelectedRow());
+            VendaGUI novo = new VendaGUI(recebido);
+            novo.setVisible(true);
+        }
+    }//GEN-LAST:event_btnVendasNovoActionPerformed
+
+    private void btnVendasEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendasEditarActionPerformed
+        if(tblVendas.getSelectedRow() != -1){
+            Venda editado = vendasTable.editar(tblVendas.getSelectedRow());
+            VendaGUI editar = new VendaGUI(editado);
+            editar.setVisible(true);
+        }
+    }//GEN-LAST:event_btnVendasEditarActionPerformed
+
+    private void btnVendasRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendasRemoverActionPerformed
+        if(tblVendas.getSelectedRow() != -1){
+            Venda removido = vendasTable.remover(tblVendas.getSelectedRow());
+            VendaDAO remover = new VendaDAO();
+            remover.conectar();
+            remover.remover(removido.getIdVenda(),removido.getQtdVendida(),removido.getProduto());
+            remover.desconectar();
+        }
+    }//GEN-LAST:event_btnVendasRemoverActionPerformed
+
+    private void btnVendasHistoricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendasHistoricoActionPerformed
+        tblVendas.setModel(vendasTable);
+        btnVendasRemover.setVisible(true);
+        btnVendasEditar.setVisible(true);
+        btnVendasNovo.setVisible(false);
+        vendasControle = true;
+        
+        VendaDAO vendas = new VendaDAO();
+        vendas.conectar();
+        vendasTable.setTable(vendas.listar());
+        vendasTable.fireTableDataChanged();
+        vendas.desconectar();
+    }//GEN-LAST:event_btnVendasHistoricoActionPerformed
+
+    private void btnVendasRealizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendasRealizarActionPerformed
+        tblVendas.setModel(novoVendasTable);
+        btnVendasRemover.setVisible(false);
+        btnVendasEditar.setVisible(false);
+        btnVendasNovo.setVisible(true);
+        vendasControle = false;
+        
+        ProdutoDAO novaVenda = new ProdutoDAO();
+        novaVenda.conectar();
+        novoVendasTable.setTable(novaVenda.listar());
+        novoVendasTable.fireTableDataChanged();
+        novaVenda.desconectar();
+    }//GEN-LAST:event_btnVendasRealizarActionPerformed
+
+    private void btnVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVendasActionPerformed
+        pnlMenuInicial.setVisible(false);
+        pnlVendas.setVisible(true);
+    }//GEN-LAST:event_btnVendasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1017,9 +1291,17 @@ public class Adm extends javax.swing.JFrame {
     private javax.swing.JButton btnUsuariosRemover;
     private javax.swing.JButton btnUsuariosVoltarMenu;
     private javax.swing.JButton btnVendas;
+    private javax.swing.JButton btnVendasEditar;
+    private javax.swing.JButton btnVendasHistorico;
+    private javax.swing.JButton btnVendasNovo;
+    private javax.swing.JButton btnVendasPesquisa;
+    private javax.swing.JButton btnVendasRealizar;
+    private javax.swing.JButton btnVendasRemover;
+    private javax.swing.JButton btnVendasVoltarMenu;
     private javax.swing.JScrollPane jspProdutos;
     private javax.swing.JScrollPane jspRecebimentos;
     private javax.swing.JScrollPane jspUsuario;
+    private javax.swing.JScrollPane jspVendas;
     private javax.swing.JLabel lblProdutos;
     private javax.swing.JLabel lblProdutosExibirAlfabetica;
     private javax.swing.JLabel lblProdutosPesquisa;
@@ -1030,6 +1312,9 @@ public class Adm extends javax.swing.JFrame {
     private javax.swing.JLabel lblTituloUsuarios;
     private javax.swing.JLabel lblUsuariosExibir;
     private javax.swing.JLabel lblUsuariosPesquisa;
+    private javax.swing.JLabel lblVendas;
+    private javax.swing.JLabel lblVendasExibir;
+    private javax.swing.JLabel lblVendasPesquisa;
     private javax.swing.JPanel pnlMenuInicial;
     private javax.swing.JPanel pnlProdutos;
     private javax.swing.JPanel pnlProdutosMenu;
@@ -1037,12 +1322,16 @@ public class Adm extends javax.swing.JFrame {
     private javax.swing.JPanel pnlRecebimentos;
     private javax.swing.JPanel pnlUsuarios;
     private javax.swing.JPanel pnlUsuariosMenu;
+    private javax.swing.JPanel pnlVendas;
+    private javax.swing.JPanel pnlVendasMenu;
     private javax.swing.JTable tblProdutos;
     private javax.swing.JTable tblRecebimentos;
     private javax.swing.JTable tblUsuarios;
+    private javax.swing.JTable tblVendas;
     private javax.swing.JTextField txtProdutosPesquisa;
     private javax.swing.JTextField txtRecebimentosPesquisa;
     private javax.swing.JTextField txtUsuariosPesquisa;
+    private javax.swing.JTextField txtVendasPesquisa;
     // End of variables declaration//GEN-END:variables
 
 }
