@@ -6,9 +6,8 @@ Programação de Soluções Computacionais - 2022.1
 
 ## Atividade proposta e orientada pelos professores:
 
-Charles Ferreira
-
-Gerson Risso
+* Charles Ferreira
+* Gerson Risso
 
 ## Membros que compoem o grupo:
 
