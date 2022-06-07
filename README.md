@@ -1,4 +1,6 @@
-# Atividade A3 Programação de Soluções Computacionais - 2022.1 
+# Atividade A3 
+
+## Programação de Soluções Computacionais - 2022.1 
 
 Atividade proposta e orientada pelos professores:
 
@@ -9,7 +11,7 @@ Gerson Risso
 Pela Universidade Anhembi Morumbi
 
 
-Membros que compoem o grupo:
+## Membros que compoem o grupo:
 
 GABRIEL PACHÚ W. CARVALHO - RA: 125111364427
 
