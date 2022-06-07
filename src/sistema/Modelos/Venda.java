@@ -3,8 +3,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package sistema.Modelos;
+import sistema.DAO.ProdutoDAO;
 import java.time.LocalDateTime;
 import java.math.BigDecimal;
+
 
 /**
  *
@@ -16,6 +18,7 @@ public class Venda {
     private BigDecimal precoUnitario;
     private int qtdVendida;
     private LocalDateTime dataVenda;
+    private String produtoTexto;
     
     public Venda(){
     }
@@ -26,6 +29,7 @@ public class Venda {
         this.precoUnitario = venda.precoUnitario;
         this.qtdVendida = venda.qtdVendida;
         this.dataVenda = venda.dataVenda;
+        this.produtoTexto = venda.produtoTexto;
     }
     
     public int getIdVenda(){
@@ -66,6 +70,15 @@ public class Venda {
     
     public void setDataVenda(LocalDateTime dataVenda){
         this.dataVenda = dataVenda;
+    }
+    
+    public void setProdutoTexto(){
+        ProdutoDAO prod = new ProdutoDAO();
+        prod.conectar();
+        Produto produto = new Produto();
+        produto = prod.checkProduto(this.produto);
+        this.produtoTexto = produto.getNomeExibicao();
+        prod.desconectar();
     }
     
     @Override

@@ -16,7 +16,7 @@ public class Adm extends javax.swing.JFrame {
     UsuariosTableModel usuariosTable = new UsuariosTableModel();
     ProdutosTableModel produtosTable = new ProdutosTableModel();
     
-    
+    boolean recebidosControle = true;
     RecebidosTableModel recebidosTable = new RecebidosTableModel();
     ProdutosTableModel novoRecebidoTable = new ProdutosTableModel();
     
@@ -874,19 +874,48 @@ public class Adm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRecebimentosVoltarMenuActionPerformed
 
     private void btnRecebimentosPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecebimentosPesquisaActionPerformed
-        // TODO add your handling code here:
+        if(recebidosControle){
+            //historico - recebidos
+            RecebidoDAO buscar = new RecebidoDAO();
+            buscar.conectar();
+            recebidosTable.setTable(buscar.listarPesquisa(txtRecebimentosPesquisa.getText()));
+            recebidosTable.fireTableDataChanged();
+            buscar.desconectar();
+        }
+        else{
+            //novo - produtos
+            ProdutoDAO busca = new ProdutoDAO();
+            busca.conectar();
+            novoRecebidoTable.setTable(busca.listarPesquisa(txtRecebimentosPesquisa.getText()));
+            novoRecebidoTable.fireTableDataChanged();
+            busca.desconectar();
+        }
     }//GEN-LAST:event_btnRecebimentosPesquisaActionPerformed
 
     private void btnRecebimentosNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecebimentosNovoActionPerformed
-        // TODO add your handling code here:
+        if(tblRecebimentos.getSelectedRow() != -1){
+            Produto recebido = novoRecebidoTable.editar(tblRecebimentos.getSelectedRow());
+            RecebidoGUI novo = new RecebidoGUI(recebido);
+            novo.setVisible(true);
+        }
     }//GEN-LAST:event_btnRecebimentosNovoActionPerformed
 
     private void btnRecebimentosEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecebimentosEditarActionPerformed
-        // TODO add your handling code here:
+        if(tblRecebimentos.getSelectedRow() != -1){
+            Recebido editado = recebidosTable.editar(tblRecebimentos.getSelectedRow());
+            RecebidoGUI editar = new RecebidoGUI(editado);
+            editar.setVisible(true);
+        }
     }//GEN-LAST:event_btnRecebimentosEditarActionPerformed
 
     private void btnRecebimentosRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecebimentosRemoverActionPerformed
-        // TODO add your handling code here:
+        if(tblRecebimentos.getSelectedRow() != -1){
+            Recebido removido = recebidosTable.remover(tblRecebimentos.getSelectedRow());
+            RecebidoDAO remover = new RecebidoDAO();
+            remover.conectar();
+            remover.remover(removido.getIdRecebimento(),removido.getQtdRecebida(),removido.getProduto());
+            remover.desconectar();
+        }
     }//GEN-LAST:event_btnRecebimentosRemoverActionPerformed
 
     private void btnRecebimentosHistoricoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecebimentosHistoricoActionPerformed
@@ -894,10 +923,12 @@ public class Adm extends javax.swing.JFrame {
         btnRecebimentosRemover.setVisible(true);
         btnRecebimentosEditar.setVisible(true);
         btnRecebimentosNovo.setVisible(false);
+        recebidosControle = true;
         
         RecebidoDAO recebidos = new RecebidoDAO();
         recebidos.conectar();
         recebidosTable.setTable(recebidos.listar());
+        recebidosTable.fireTableDataChanged();
         recebidos.desconectar();
     }//GEN-LAST:event_btnRecebimentosHistoricoActionPerformed
 
@@ -906,10 +937,12 @@ public class Adm extends javax.swing.JFrame {
         btnRecebimentosRemover.setVisible(false);
         btnRecebimentosEditar.setVisible(false);
         btnRecebimentosNovo.setVisible(true);
-                
+        recebidosControle = false;
+        
         ProdutoDAO novoRecebimento = new ProdutoDAO();
         novoRecebimento.conectar();
         novoRecebidoTable.setTable(novoRecebimento.listar());
+        novoRecebidoTable.fireTableDataChanged();
         novoRecebimento.desconectar();
     }//GEN-LAST:event_btnRecebimentosRealizarActionPerformed
 

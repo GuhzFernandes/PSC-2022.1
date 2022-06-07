@@ -113,7 +113,7 @@ public class ProdutoDAO extends Conexao {
         
     public void editar(String marca, String nome, BigDecimal preco, int qtdEstoque, int id){
         try{
-            st = conn.prepareStatement("UPDATE projetoa3.Produtos SET Marca = '"+marca+"', Nome = '"+nome+"', preco = "+preco+", QuantidadeEstoque = "+qtdEstoque+" WHERE IdProduto = "+id);
+            st = conn.prepareStatement("UPDATE projetoa3.produtos SET Marca = '"+marca+"', Nome = '"+nome+"', preco = "+preco+", QuantidadeEstoque = "+qtdEstoque+" WHERE IdProduto = "+id);
             st.execute();
         }catch(SQLException e){
             System.out.println("Erro ao atualizar "+e);

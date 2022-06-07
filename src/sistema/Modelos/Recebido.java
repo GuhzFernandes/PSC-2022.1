@@ -24,6 +24,7 @@ public class Recebido {
         this.produto = recebido.produto;
         this.qtdRecebida = recebido.qtdRecebida;
         this.dataRecebimento = recebido.dataRecebimento;
+        this.produtoTexto = recebido.produtoTexto;
     }
     
     public int getIdRecebimento(){
@@ -47,7 +48,7 @@ public class Recebido {
     }
     
     public void setIdRecebimento(int idRecebimento){
-        
+        this.idRecebimento = idRecebimento;
     }
     
     public void setProduto(int produto){

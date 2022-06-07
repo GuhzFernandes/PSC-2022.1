@@ -58,7 +58,7 @@ public class RecebidoDAO extends Conexao {
         List recebidos = new ArrayList<>();
         Recebido recebido;
         try{
-            st = conn.prepareStatement("SELECT * FROM projetoa3.recebidos WHERE DataRecebimento LIKE '%"+criterio+"%' OR idProduto LIKE '%"+criterio+"%'");
+            st = conn.prepareStatement("SELECT * FROM projetoa3.recebidos WHERE DataRecebimento LIKE '%"+criterio+"%' OR Produto LIKE '%"+criterio+"%'");
             rs = st.executeQuery();
             while(rs.next()){
                 recebido = new Recebido();
@@ -79,23 +79,30 @@ public class RecebidoDAO extends Conexao {
         try{
             st = conn.prepareStatement("INSERT INTO projetoa3.recebidos (Produto, QuantidadeRecebida,DataRecebimento)VALUES("+idProduto+","+qtdRecebida+",CONVERT('"+dataRecebimento+"', DATETIME))");
             st.execute();
+            st = conn.prepareStatement("UPDATE projetoa3.produtos SET QuantidadeEstoque = QuantidadeEstoque + "+qtdRecebida+"  WHERE IdProduto = "+idProduto);
+            st.execute();
         }catch(SQLException e){
             System.out.println("Erro ao Criar "+e);
         }
     }
     
-    public void editar(int idProduto, int qtdRecebida, LocalDateTime dataRecebimento, int id){
+    public void editar(int idProduto, int qtdAnterior,int qtdRecebida, LocalDateTime dataRecebimento, int idRecebimento){
         try{
-            st = conn.prepareStatement("UPDATE projetoa3.recebidos SET Produto = "+idProduto+", QuantidadeRecebida = "+qtdRecebida+", DataRecebimento = CONVERT('"+dataRecebimento+"', DATETIME) WHERE IdRecebimento = "+id);
+            int qtdAtualizada = qtdRecebida - qtdAnterior;
+            st = conn.prepareStatement("UPDATE projetoa3.recebidos SET QuantidadeRecebida = "+qtdRecebida+", DataRecebimento = CONVERT('"+dataRecebimento+"', DATETIME) WHERE IdRecebimento = "+idRecebimento);
+            st.execute();
+            st = conn.prepareStatement("UPDATE projetoa3.produtos SET QuantidadeEstoque = QuantidadeEstoque + "+qtdAtualizada+"  WHERE IdProduto = "+idProduto);
             st.execute();
         }catch(SQLException e){
             System.out.println("Erro ao atualizar "+e);
         }
     }
     
-    public void remover(int id){
+    public void remover(int idRecebimento,int qtdRecebida,int idProduto){
         try{
-            st = conn.prepareStatement("DELETE FROM projetoa3.recebidos WHERE IdRecebimento = "+id);
+            st = conn.prepareStatement("DELETE FROM projetoa3.recebidos WHERE IdRecebimento = "+idRecebimento);
+            st.execute();
+            st = conn.prepareStatement("UPDATE projetoa3.produtos SET QuantidadeEstoque = QuantidadeEstoque - "+qtdRecebida+"  WHERE IdProduto = "+idProduto);
             st.execute();
         }catch(SQLException e){
             System.out.println("Erro ao deletar "+e);
