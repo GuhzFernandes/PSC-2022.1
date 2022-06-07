@@ -1,15 +1,14 @@
 # Atividade A3 
 
-## Programação de Soluções Computacionais - 2022.1 
+Universidade Anhembi Morumbi
 
-Atividade proposta e orientada pelos professores:
+Programação de Soluções Computacionais - 2022.1 
+
+## Atividade proposta e orientada pelos professores:
 
 Charles Ferreira
 
 Gerson Risso
-
-Pela Universidade Anhembi Morumbi
-
 
 ## Membros que compoem o grupo:
 
@@ -21,4 +20,4 @@ Pela Universidade Anhembi Morumbi
 
 [MILENA O. DE A. R. CORRÊA RA: - 125111350681](https://github.com/milenaofarril)
 
-VINICIUS MATOS DE SOUZA RA: - 125111349444
+[VINICIUS MATOS DE SOUZA RA: - 125111349444]()
