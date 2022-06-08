@@ -135,8 +135,8 @@ public class Adm extends javax.swing.JFrame {
         pnlRelatorios = new javax.swing.JPanel();
         pnlRelatoriosMenu = new javax.swing.JPanel();
         btnRelatoriosVoltarMenu = new javax.swing.JButton();
-        btnRelatorios01 = new javax.swing.JButton();
-        btnRelatorios02 = new javax.swing.JButton();
+        btnRelatoriosSemEstoque = new javax.swing.JButton();
+        btnRelatoriosQtdTotalPorItem = new javax.swing.JButton();
         lblRelatorios = new javax.swing.JLabel();
         jspRelatorios = new javax.swing.JScrollPane();
         txtRelatorios = new javax.swing.JTextArea();
@@ -193,30 +193,29 @@ public class Adm extends javax.swing.JFrame {
         pnlMenuInicialLayout.setHorizontalGroup(
             pnlMenuInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlMenuInicialLayout.createSequentialGroup()
-                .addGap(352, 352, 352)
-                .addComponent(btnDesconectar)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMenuInicialLayout.createSequentialGroup()
-                .addContainerGap(250, Short.MAX_VALUE)
+                .addContainerGap(285, Short.MAX_VALUE)
                 .addGroup(pnlMenuInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMenuInicialLayout.createSequentialGroup()
-                        .addGroup(pnlMenuInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnRecebidos, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnVendas, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnRelatorios, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(pnlMenuInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(250, 250, 250))
+                            .addComponent(btnRelatorios, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnVendas, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnRecebidos, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(215, 215, 215))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMenuInicialLayout.createSequentialGroup()
                         .addComponent(lblTitulo)
-                        .addGap(350, 350, 350))))
+                        .addGap(319, 319, 319))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlMenuInicialLayout.createSequentialGroup()
+                        .addComponent(btnDesconectar)
+                        .addGap(307, 307, 307))))
         );
         pnlMenuInicialLayout.setVerticalGroup(
             pnlMenuInicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlMenuInicialLayout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addComponent(lblTitulo)
                 .addGap(64, 64, 64)
+                .addComponent(lblTitulo)
+                .addGap(50, 50, 50)
                 .addComponent(btnUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnProdutos, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -226,9 +225,9 @@ public class Adm extends javax.swing.JFrame {
                 .addComponent(btnVendas, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnRecebidos, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
+                .addGap(43, 43, 43)
                 .addComponent(btnDesconectar)
-                .addContainerGap(60, Short.MAX_VALUE))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
         pnlUsuarios.setPreferredSize(new java.awt.Dimension(800, 600));
@@ -378,7 +377,7 @@ public class Adm extends javax.swing.JFrame {
                     .addGroup(pnlUsuariosLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jspUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 532, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         pnlUsuariosLayout.setVerticalGroup(
             pnlUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -877,17 +876,17 @@ public class Adm extends javax.swing.JFrame {
             }
         });
 
-        btnRelatorios01.setText("Relatorio 01");
-        btnRelatorios01.addActionListener(new java.awt.event.ActionListener() {
+        btnRelatoriosSemEstoque.setText("Produtos Fora de Estoque");
+        btnRelatoriosSemEstoque.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRelatorios01ActionPerformed(evt);
+                btnRelatoriosSemEstoqueActionPerformed(evt);
             }
         });
 
-        btnRelatorios02.setText("Relatorio 02");
-        btnRelatorios02.addActionListener(new java.awt.event.ActionListener() {
+        btnRelatoriosQtdTotalPorItem.setText("Vendas Totais Por Produto");
+        btnRelatoriosQtdTotalPorItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRelatorios02ActionPerformed(evt);
+                btnRelatoriosQtdTotalPorItemActionPerformed(evt);
             }
         });
 
@@ -898,8 +897,8 @@ public class Adm extends javax.swing.JFrame {
             .addGroup(pnlRelatoriosMenuLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlRelatoriosMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnRelatorios01, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
-                    .addComponent(btnRelatorios02, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnRelatoriosSemEstoque, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
+                    .addComponent(btnRelatoriosQtdTotalPorItem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(pnlRelatoriosMenuLayout.createSequentialGroup()
                         .addComponent(btnRelatoriosVoltarMenu)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -911,9 +910,9 @@ public class Adm extends javax.swing.JFrame {
                 .addGap(22, 22, 22)
                 .addComponent(btnRelatoriosVoltarMenu)
                 .addGap(77, 77, 77)
-                .addComponent(btnRelatorios01)
+                .addComponent(btnRelatoriosSemEstoque)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnRelatorios02)
+                .addComponent(btnRelatoriosQtdTotalPorItem)
                 .addContainerGap(417, Short.MAX_VALUE))
         );
 
@@ -933,7 +932,7 @@ public class Adm extends javax.swing.JFrame {
                 .addComponent(pnlRelatoriosMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(pnlRelatoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlRelatoriosLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 238, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 230, Short.MAX_VALUE)
                         .addComponent(lblRelatorios)
                         .addGap(235, 235, 235))
                     .addGroup(pnlRelatoriosLayout.createSequentialGroup()
@@ -1341,19 +1340,34 @@ public class Adm extends javax.swing.JFrame {
         pnlRelatorios.setVisible(false);
     }//GEN-LAST:event_btnRelatoriosVoltarMenuActionPerformed
 
-    private void btnRelatorios01ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelatorios01ActionPerformed
+    private void btnRelatoriosSemEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelatoriosSemEstoqueActionPerformed
         RelatorioDAO relatorio = new RelatorioDAO();
         relatorio.conectar();
         List<Produto> produtos = relatorio.listarForaEstoque();
         relatorio.desconectar();
-        
-        
-        
-    }//GEN-LAST:event_btnRelatorios01ActionPerformed
+        String relatorioTexto = "\n\tRelatorio de produtos fora de estoque:\n\n";
+        if(!produtos.isEmpty()){
+            for(Produto p : produtos){
+                relatorioTexto += "\t"+p.getNomeExibicao()+"\n";
+            }
+        }
+        else{
+            relatorioTexto += "\tSem produtos fora de estoque!";
+        }
+        txtRelatorios.setText(relatorioTexto);
+    }//GEN-LAST:event_btnRelatoriosSemEstoqueActionPerformed
 
-    private void btnRelatorios02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelatorios02ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnRelatorios02ActionPerformed
+    private void btnRelatoriosQtdTotalPorItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelatoriosQtdTotalPorItemActionPerformed
+        RelatorioDAO relatorio = new RelatorioDAO();
+        relatorio.conectar();
+        List<Relatorio> produtos = relatorio.listarVendasTotais();
+        relatorio.desconectar();
+        String relatorioTexto = "\n\tRelatorio de vendas totais por produto:\n\n";
+        for(Relatorio r : produtos){
+                relatorioTexto += "\t"+r.getNomeExibicao()+"\n"+"\tQuantidade total vendida: "+r.getQtd()+"\n\n";
+        }
+        txtRelatorios.setText(relatorioTexto);
+    }//GEN-LAST:event_btnRelatoriosQtdTotalPorItemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1411,8 +1425,8 @@ public class Adm extends javax.swing.JFrame {
     private javax.swing.JButton btnRecebimentosRemover;
     private javax.swing.JButton btnRecebimentosVoltarMenu;
     private javax.swing.JButton btnRelatorios;
-    private javax.swing.JButton btnRelatorios01;
-    private javax.swing.JButton btnRelatorios02;
+    private javax.swing.JButton btnRelatoriosQtdTotalPorItem;
+    private javax.swing.JButton btnRelatoriosSemEstoque;
     private javax.swing.JButton btnRelatoriosVoltarMenu;
     private javax.swing.JButton btnUsuarios;
     private javax.swing.JButton btnUsuariosEditar;

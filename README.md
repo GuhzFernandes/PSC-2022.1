@@ -2,7 +2,7 @@
 
 Universidade Anhembi Morumbi
 
-Programação de Soluções Computacionais - 2022.1 
+Programação de Soluções Computacionais - 2022.1
 
 ## Atividade proposta e orientada pelos professores:
 
@@ -23,12 +23,12 @@ Programação de Soluções Computacionais - 2022.1
 
 ### Local do Jconnector:
 
-Para o uso correto do software, deve-se alterar o arquivo *project.properties*' dentro do diretorio **ProjetoA3\nbproject\**
+Para o uso correto do software, deve-se alterar o arquivo ***project.properties*** dentro do diretorio ***ProjetoA3\nbproject***
 
-Em especifico a linha 36 deve-se indicar o local correto para onde o arquivo *mysql-connector-java-8.0.29.jar* cujo encontra-se no diretorio **ProjetoA3\Arquivos Complementares\**
+Em especifico a linha 36 deve-se indicar o local correto para onde o arquivo ***mysql-connector-java-8.0.29.jar*** cujo encontra-se no diretorio ***ProjetoA3\Arquivos Complementares***
 
 ### Banco de dados:
 
-Para funcionar corretamente o banco de dados, deve-se antes utilizar o script *ProjetoA3.sql* para cria-lo, o arquivo está disponibilizado em **ProjetoA3\Arquivos Complementares\**
+Para funcionar corretamente o banco de dados, deve-se antes utilizar o script ***ProjetoA3.sql*** para cria-lo, o arquivo está disponibilizado em ***ProjetoA3\Arquivos Complementares***
 
-Também deve-se alterar o arquivo *Conexao.java* localizado em **ProjetoA3\src\sistema\DAO**, especificamente as linhas 18 e 19 devem indicicar respectivamente o usuario e a senha correspondente ao configurado localmente em seu MySQL
+Também deve-se alterar o arquivo ***Conexao.java*** localizado em ***ProjetoA3\src\sistema\DAO***, especificamente as linhas 18 e 19 devem indicicar respectivamente o usuario e a senha correspondente ao configurado localmente em seu MySQL
