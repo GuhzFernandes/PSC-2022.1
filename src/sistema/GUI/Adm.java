@@ -32,6 +32,7 @@ public class Adm extends javax.swing.JFrame {
         pnlProdutos.setVisible(false);
         pnlRecebimentos.setVisible(false);
         pnlVendas.setVisible(false);
+        pnlRelatorios.setVisible(false);
                 
         tblUsuarios.setModel(usuariosTable);
         tblUsuarios.setAutoCreateRowSorter(true);
@@ -48,7 +49,8 @@ public class Adm extends javax.swing.JFrame {
         btnVendasRemover.setVisible(false);
         btnVendasEditar.setVisible(false);
         btnVendasNovo.setVisible(false);
-            
+        
+        txtRelatorios.setEditable(false);
     }
    
     /**
@@ -130,6 +132,14 @@ public class Adm extends javax.swing.JFrame {
         jspVendas = new javax.swing.JScrollPane();
         tblVendas = new javax.swing.JTable();
         lblVendas = new javax.swing.JLabel();
+        pnlRelatorios = new javax.swing.JPanel();
+        pnlRelatoriosMenu = new javax.swing.JPanel();
+        btnRelatoriosVoltarMenu = new javax.swing.JButton();
+        btnRelatorios01 = new javax.swing.JButton();
+        btnRelatorios02 = new javax.swing.JButton();
+        lblRelatorios = new javax.swing.JLabel();
+        jspRelatorios = new javax.swing.JScrollPane();
+        txtRelatorios = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -363,12 +373,12 @@ public class Adm extends javax.swing.JFrame {
                 .addComponent(pnlUsuariosMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(pnlUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlUsuariosLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jspUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 534, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlUsuariosLayout.createSequentialGroup()
                         .addGap(238, 238, 238)
-                        .addComponent(lblTituloUsuarios)))
-                .addContainerGap(14, Short.MAX_VALUE))
+                        .addComponent(lblTituloUsuarios))
+                    .addGroup(pnlUsuariosLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jspUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 532, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         pnlUsuariosLayout.setVerticalGroup(
             pnlUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -856,6 +866,96 @@ public class Adm extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        pnlRelatorios.setPreferredSize(new java.awt.Dimension(800, 600));
+
+        pnlRelatoriosMenu.setBackground(new java.awt.Color(220, 220, 220));
+
+        btnRelatoriosVoltarMenu.setText("< Voltar");
+        btnRelatoriosVoltarMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRelatoriosVoltarMenuActionPerformed(evt);
+            }
+        });
+
+        btnRelatorios01.setText("Relatorio 01");
+        btnRelatorios01.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRelatorios01ActionPerformed(evt);
+            }
+        });
+
+        btnRelatorios02.setText("Relatorio 02");
+        btnRelatorios02.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRelatorios02ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnlRelatoriosMenuLayout = new javax.swing.GroupLayout(pnlRelatoriosMenu);
+        pnlRelatoriosMenu.setLayout(pnlRelatoriosMenuLayout);
+        pnlRelatoriosMenuLayout.setHorizontalGroup(
+            pnlRelatoriosMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlRelatoriosMenuLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlRelatoriosMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnRelatorios01, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
+                    .addComponent(btnRelatorios02, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(pnlRelatoriosMenuLayout.createSequentialGroup()
+                        .addComponent(btnRelatoriosVoltarMenu)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        pnlRelatoriosMenuLayout.setVerticalGroup(
+            pnlRelatoriosMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlRelatoriosMenuLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(btnRelatoriosVoltarMenu)
+                .addGap(77, 77, 77)
+                .addComponent(btnRelatorios01)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnRelatorios02)
+                .addContainerGap(417, Short.MAX_VALUE))
+        );
+
+        lblRelatorios.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lblRelatorios.setText("Relatorios");
+
+        txtRelatorios.setColumns(20);
+        txtRelatorios.setRows(5);
+        jspRelatorios.setViewportView(txtRelatorios);
+
+        javax.swing.GroupLayout pnlRelatoriosLayout = new javax.swing.GroupLayout(pnlRelatorios);
+        pnlRelatorios.setLayout(pnlRelatoriosLayout);
+        pnlRelatoriosLayout.setHorizontalGroup(
+            pnlRelatoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlRelatoriosLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pnlRelatoriosMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnlRelatoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlRelatoriosLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 238, Short.MAX_VALUE)
+                        .addComponent(lblRelatorios)
+                        .addGap(235, 235, 235))
+                    .addGroup(pnlRelatoriosLayout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(jspRelatorios, javax.swing.GroupLayout.PREFERRED_SIZE, 536, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
+        pnlRelatoriosLayout.setVerticalGroup(
+            pnlRelatoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlRelatoriosLayout.createSequentialGroup()
+                .addGroup(pnlRelatoriosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRelatoriosLayout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(lblRelatorios)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jspRelatorios))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRelatoriosLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(pnlRelatoriosMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -880,6 +980,11 @@ public class Adm extends javax.swing.JFrame {
                     .addContainerGap()
                     .addComponent(pnlVendas, javax.swing.GroupLayout.DEFAULT_SIZE, 812, Short.MAX_VALUE)
                     .addContainerGap()))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(pnlRelatorios, javax.swing.GroupLayout.DEFAULT_SIZE, 812, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -903,13 +1008,19 @@ public class Adm extends javax.swing.JFrame {
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pnlVendas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap()))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(pnlRelatorios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRelatoriosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelatoriosActionPerformed
-        // TODO add your handling code here:
+        pnlMenuInicial.setVisible(false);
+        pnlRelatorios.setVisible(true);
     }//GEN-LAST:event_btnRelatoriosActionPerformed
 
     private void btnDesconectarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesconectarActionPerformed
@@ -1225,6 +1336,25 @@ public class Adm extends javax.swing.JFrame {
         pnlVendas.setVisible(true);
     }//GEN-LAST:event_btnVendasActionPerformed
 
+    private void btnRelatoriosVoltarMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelatoriosVoltarMenuActionPerformed
+        pnlMenuInicial.setVisible(true);
+        pnlRelatorios.setVisible(false);
+    }//GEN-LAST:event_btnRelatoriosVoltarMenuActionPerformed
+
+    private void btnRelatorios01ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelatorios01ActionPerformed
+        RelatorioDAO relatorio = new RelatorioDAO();
+        relatorio.conectar();
+        List<Produto> produtos = relatorio.listarForaEstoque();
+        relatorio.desconectar();
+        
+        
+        
+    }//GEN-LAST:event_btnRelatorios01ActionPerformed
+
+    private void btnRelatorios02ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRelatorios02ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRelatorios02ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1281,6 +1411,9 @@ public class Adm extends javax.swing.JFrame {
     private javax.swing.JButton btnRecebimentosRemover;
     private javax.swing.JButton btnRecebimentosVoltarMenu;
     private javax.swing.JButton btnRelatorios;
+    private javax.swing.JButton btnRelatorios01;
+    private javax.swing.JButton btnRelatorios02;
+    private javax.swing.JButton btnRelatoriosVoltarMenu;
     private javax.swing.JButton btnUsuarios;
     private javax.swing.JButton btnUsuariosEditar;
     private javax.swing.JButton btnUsuariosExibirAdm;
@@ -1300,6 +1433,7 @@ public class Adm extends javax.swing.JFrame {
     private javax.swing.JButton btnVendasVoltarMenu;
     private javax.swing.JScrollPane jspProdutos;
     private javax.swing.JScrollPane jspRecebimentos;
+    private javax.swing.JScrollPane jspRelatorios;
     private javax.swing.JScrollPane jspUsuario;
     private javax.swing.JScrollPane jspVendas;
     private javax.swing.JLabel lblProdutos;
@@ -1308,6 +1442,7 @@ public class Adm extends javax.swing.JFrame {
     private javax.swing.JLabel lblRecebimentos;
     private javax.swing.JLabel lblRecebimentosExibir;
     private javax.swing.JLabel lblRecebimentosPesquisa;
+    private javax.swing.JLabel lblRelatorios;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lblTituloUsuarios;
     private javax.swing.JLabel lblUsuariosExibir;
@@ -1320,6 +1455,8 @@ public class Adm extends javax.swing.JFrame {
     private javax.swing.JPanel pnlProdutosMenu;
     private javax.swing.JPanel pnlRecebimentoMenu;
     private javax.swing.JPanel pnlRecebimentos;
+    private javax.swing.JPanel pnlRelatorios;
+    private javax.swing.JPanel pnlRelatoriosMenu;
     private javax.swing.JPanel pnlUsuarios;
     private javax.swing.JPanel pnlUsuariosMenu;
     private javax.swing.JPanel pnlVendas;
@@ -1330,6 +1467,7 @@ public class Adm extends javax.swing.JFrame {
     private javax.swing.JTable tblVendas;
     private javax.swing.JTextField txtProdutosPesquisa;
     private javax.swing.JTextField txtRecebimentosPesquisa;
+    private javax.swing.JTextArea txtRelatorios;
     private javax.swing.JTextField txtUsuariosPesquisa;
     private javax.swing.JTextField txtVendasPesquisa;
     // End of variables declaration//GEN-END:variables
